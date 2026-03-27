@@ -1,0 +1,8 @@
+<app-custom-modal 
+  [isOpen]="isModalOpen" 
+  [title]="'Confirm Action'"
+  [message]="'Are you sure you want to proceed?'"
+  (onClose)="isModalOpen = false"
+  (onConfirm)="handleConfirm()">
+</app-custom-modal>
+<div (click)="openModal()">Open</div>

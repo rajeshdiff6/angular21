@@ -1,0 +1,9 @@
+<form [formGroup]="todo" (ngSubmit)="save()">
+    <input name="list" type="text" formControlName="list" />
+    <button type="submit" (click)="add()">Add</button>
+</form>
+{{lists | json }}
+@for(list of lists; track list; let i = $index) {
+    <p>{{ list }}</p>
+    <button (click)="remove(i)">Remove</button>
+}

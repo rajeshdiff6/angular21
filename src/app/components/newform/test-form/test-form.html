@@ -1,0 +1,33 @@
+<form [formGroup]="orderForm">
+    <div>
+        <label for="orderId">Order Id:</label>
+        <input type="text" name="orderId" formControlName="orderId" />
+    </div>
+    <div>
+        <label for="orderDate">Order Date:</label>
+        <input type="text" name="orderDate" formControlName="orderDate" />
+    </div>
+
+    <div formArrayName="items">
+        @for(item of items.controls; track $index; let i=$index) {
+            <div [formGroupName]="i">
+                <div>
+                    <label for="productName">Product Name:</label>
+                    <input type="text" name="productName" formControlName="productName" />
+                </div>    
+                <div>
+                    <label for="price">Price:</label>
+                    <input type="text" name="price" formControlName="price" />
+                </div>    
+                <div>
+                    <label for="quantity">Quantity:</label>
+                    <input type="text" name="quantity" formControlName="quantity" />
+                </div>    
+                <button (click)="removeItem(i)">Remove Item{{i}}</button>
+            </div>
+        }
+        <div>
+            <button (click)="addItem()">Add Item</button>
+        </div>
+    </div>
+</form>

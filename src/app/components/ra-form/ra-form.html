@@ -1,0 +1,49 @@
+{{model | json}}
+<form (ngSubmit)="onSubmit()" #actorform="ngForm" name="skillform">
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="model.name" name="name" required />
+
+    <label for="skill">Skill:</label>
+    <select id="skill" [(ngModel)]="model.skill" name="skill">
+        @for (skill of skills; track $index) {
+            <option [value]="skill">{{skill}}</option>
+        }
+    </select>
+
+    <label for="studio">Studio:</label>
+    <input type="text" id="studio" [(ngModel)]="model.studio" name="studio" />
+
+    <button type="submit">Submit</button>
+</form>
+
+<hr><form [formGroup]="profileForm" (ngSubmit)="profileSubmit()" name="profileform">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" formControlName="firstName" name="firstName" />
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" formControlName="lastName" name="lastName"/>
+
+    <div formGroupName="address">
+         <h3>Address</h3>   
+         <label for="street">Street</label>
+         <input id="street" type="text" formControlName="street" name="street"/>
+
+         <label for="landMark">Land Mark</label>
+         <input id="landMark" type="text" formControlName="landMark" name="landMark"/>
+    </div>
+<button (click)="updateProfile()">Update Profile</button>
+<button (click)="updateName()">Set Value</button>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
+
+<form (ngSubmit)="searchConfirm()" name="searchbox">
+    <input type="text" [formControl]="searchBox" name="searchBox" />
+    {{ searchBox }}
+</form>
+
+<form [formGroup]="profileFormBuilder" (ngSubmit)="formBuilderSubmit()">
+    <input type="text" formControlName="username" />
+    <input type="text" formControlName="address" />
+
+    <button type="submit">Submit Form Builder</button>
+</form>

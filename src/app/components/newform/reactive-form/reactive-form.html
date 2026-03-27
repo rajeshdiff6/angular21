@@ -1,0 +1,18 @@
+<h5>Status: {{ fbSaveForm.status }}</h5>
+<form [formGroup]="fbSaveForm" (ngSubmit)="saveForm()">
+    <select name="country" formControlName="country">
+        <option value="">Select Country</option>
+        @for(country of countries; track country) {
+            <option [value]="country.name">{{ country.name }}</option>
+        }
+    </select>
+
+    <select name="city" formControlName="city">
+        <option value="">Select City</option>
+        @for(city of cities; track city) {
+            <option [value]="city">{{ city }}</option>
+        }
+    </select>
+
+    <button type="submit">Save</button>
+</form>

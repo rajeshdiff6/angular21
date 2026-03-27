@@ -1,0 +1,14 @@
+<p colo>component-a works! {{ name | message }}</p>
+<button (click)="clickUpdate()">update parent</button>
+<h2>Child: {{twowaybindingcomponent()}}</h2>
+<button (click)="updateTwoWayBindingValue()">Child: Update two way binding</button>
+
+@if (a < b ) {
+    {{ a }} is less than {{b}}
+} @else if (a > b) {
+    {{ a }} is greater than {{ b }}
+} 
+
+@for (item of items; track item.id) {
+    {{ item.item }}<br>
+}

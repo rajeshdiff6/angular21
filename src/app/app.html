@@ -1,0 +1,34 @@
+<app-test-form></app-test-form>
+<app-todolist></app-todolist>
+<app-newform></app-newform>
+<app-rxjs></app-rxjs>
+<app-posts></app-posts>
+<div #loadWorkout>load workout</div>
+@defer (on hover(loadWorkout)) {
+<app-workout [title]="'input from parent'" (sendValue)="receiveMessage($event)"></app-workout>
+} @placeholder {
+    Placeholder for workout component
+} @error {
+    Error occured when loading component
+}
+<h1 col [ngStyle]="currentStyles">Hello, {{ title() }}</h1>
+<button [ngClass]="{ 'active' : classes}" (click)="increment()">click</button>value is: {{val()}}
+<router-outlet></router-outlet>
+<app-profile-photo [src1]="'https://example.com/profile.jpg'">
+    <app-card-title>Title</app-card-title>
+    <app-card-body>This is the body content.</app-card-body>
+</app-profile-photo>
+
+<app-component-b></app-component-b>
+@defer(on idle) {
+<app-component-a [name]="'name from parent'" (update)="triggerMethodInParent($event)" [(twowaybindingcomponent)]="countinitial"></app-component-a>
+} @placeholder {
+    <h3>Component A content will load here by defer</h3>
+} @error {
+    <p>error loading component a</p>
+}
+<h2>twoway binding parent:{{ countinitial }}</h2>
+<router-outlet></router-outlet>
+<a href="/my-modal">My Modal</a>
+<a href="/forms">Forms</a>
+<button (click)="viewComponentAContent()">Component A content</button>

@@ -1,0 +1,7 @@
+<h3>Posts loaded</h3>
+{{posts$}}
+<ul>
+    <li *ngFor="let post of posts$ | async">{{ post.title }}</li>
+</ul>
+
+<button (click)="loadPosts()">Load Posts</button>

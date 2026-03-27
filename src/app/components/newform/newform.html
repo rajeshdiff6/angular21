@@ -1,0 +1,22 @@
+
+<form #addressForm (ngSubmit)="saveForm()">
+    <select name="country" [(ngModel)]="formData.country" (change)="onCountryChange()" required>
+        <option value="">Select Country</option>
+        <option *ngFor="let country of countries" [value]="country.name">{{ country.name }}</option>
+    </select>{{formData.country|json}}
+
+    <select name="city" [(ngModel)]="formData.city">
+        <option value="">Select City</option>
+        @for(city of cities; track city) {
+            <option [value]="city">{{ city }}</option>
+        }
+    </select>
+
+    <button type="submit" (click)="saveForm()">Save</button>
+</form>
+
+<h3>Reactive form</h3>
+<app-reactive-form></app-reactive-form>
+
+<h3> Dynamic Form</h3>
+<app-dynamic-form></app-dynamic-form>
